@@ -14,7 +14,9 @@ public class App{
         System.out.println("2... najst film podla nazvu");
         System.out.println("3... najst film podla nazvu herca");
         System.out.println("4... odstranit film");
-        System.out.println("5... skoncenie programu");
+        System.out.println("5... Vypis celej databazi");
+        System.out.println("6... upravit existujuci film");
+        System.out.println("7... skoncenie programu");
         System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
         sc.nextLine();
@@ -108,7 +110,63 @@ public class App{
                 }
                 else
                     System.out.println("Film nebol najdeny (asi zle zadane meno)");
+                break;
             case 5:
+                for(Filmy film : filmMap.values()){
+                    System.out.println("---------------------");
+                    System.out.println("Meno: " + film.getFilm_name());
+                    System.out.println("Meno rezisera: " + film.getDirector_name());
+                    System.out.println("Rok vydania: " + film.getRelease_year());
+                    System.out.println("review: " + film.getReview());
+                    System.out.println("Actors: " + Arrays.toString(film.getActors()));
+                    System.out.println("---------------------");
+                }
+                break;
+            case 6:
+                System.out.print("Meno filmu/animaku ktory chces upravit: ");
+                String changeFilm_name = sc.nextLine();
+                if(filmMap.containsKey(changeFilm_name)){
+                    Filmy film = filmMap.get(changeFilm_name);
+                    System.out.println("---------------------");
+                    System.out.println("Momentalne informacie o filme: " + film.getFilm_name());
+                    System.out.println("Meno rezisera: " + film.getDirector_name());
+                    System.out.println("Rok vydania: " + film.getRelease_year());
+                    System.out.println("review: " + film.getReview());
+                    System.out.println("Actors: " + Arrays.toString(film.getActors()));
+                    System.out.println("---------------------");
+                    System.out.print("Napis nove meno filmu (stlac enter ked ho chces nechat): ");
+                    String newFilm_name = sc.nextLine();
+                    System.out.print("Napis reziser filmu (stlac enter ked ho chces nechat): ");
+                    String newDirector_name = sc.nextLine();
+                    System.out.print("Novy rok vydania (stlac enter ked ho chces nechat): ");
+                    int newRelease_year = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Nove review: ");
+                    int newReview = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Novy herci (oddeleny ciarkou)(stlac eneter pokial chces nechat): ");
+                    String newActors = sc.nextLine();
+                    if(!newFilm_name.isEmpty()){
+                        film.setFilm_name(newFilm_name);
+                    }
+                    if(!newDirector_name.isEmpty()){
+                        film.setDirector_name(newDirector_name);
+                    }
+                    if(newRelease_year != 0){
+                        film.setRelease_year(newRelease_year);
+                    }
+                    if(newReview != 0){
+                        film.setReview(newReview);
+                    }
+                    if(!newActors.isEmpty()){
+                         String[] actors = newActors.split(",");
+                         film.setActors(actors);
+                    }
+                }else{
+                    System.out.println("Hladany film neexituje!");
+                }
+                break;
+            case 7:
                 System.out.println("Koniec programu");
                 System.exit(0);
                 sc.close();

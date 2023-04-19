@@ -4,5 +4,4 @@ public class Film extends Filmy{
         super(film_name, director_name, release_year, review, actors);
     }
 
-    
 }

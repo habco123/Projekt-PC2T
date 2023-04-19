@@ -30,6 +30,20 @@ abstract class Filmy {
     public String[] getActors(){
         return actors;
     }
-    
+    public void setFilm_name(String name){
+        this.film_name = name;
+    }
+    public void setDirector_name(String name){
+        this.director_name = name;
+    }
+    public void setRelease_year(int year){
+        this.release_year = year;
+    }
+    public void setReview(int review){
+        this.review = review;
+    }
+    public void setActors(String[] actors){
+        this.actors = actors;
+    }
 
 }
