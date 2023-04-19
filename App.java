@@ -34,13 +34,11 @@ public class App{
                     String director_name = sc.nextLine();
                     System.out.print("Rok vydania: ");
                     int release_year = sc.nextInt();
-                    System.out.print("Review out of / 5 ");
-                    int review = sc.nextInt();
                     sc.nextLine();
                     System.out.println("Mena hercov (rozdeleni ciarkou): ");
                     String[] actors = sc.nextLine().split(",");
 
-                    Film film = new Film(film_name, director_name, release_year, review, actors);
+                    Film film = new Film(film_name, director_name, release_year, actors);
                     filmMap.put(film_name, film);
                     System.out.println("Film bol uspesne pridany");
                 }else{
@@ -50,15 +48,13 @@ public class App{
                     String director_name = sc.nextLine();
                     System.out.print("Rok vydania: ");
                     int release_year = sc.nextInt();
-                    System.out.print("Review out of / 5 ");
-                    int review = sc.nextInt();
                     sc.nextLine();
                     System.out.println("Mena animatorov (rozdeleni ciarkou): ");
                     String[] actors = sc.nextLine().split(",");
                     System.out.print("Vekove obmedzenie: ");
                     int min_age = sc.nextInt();
                     
-                    AnimatedFilm film = new AnimatedFilm(film_name, director_name, release_year, review, actors, min_age);
+                    AnimatedFilm film = new AnimatedFilm(film_name, director_name, release_year, actors, min_age);
                     filmMap.put(film_name, film);
                     System.out.println("Animak bol uspesne pridany");
                 }
@@ -72,7 +68,6 @@ public class App{
                     System.out.println("Meno: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
-                    System.out.println("Review (out of/5) : " + hladanyFilm.getReview());
                     System.out.println("Herci: " + Arrays.toString(hladanyFilm.getActors()));
                     System.out.println("---------------------");
                 }
@@ -91,7 +86,6 @@ public class App{
                         System.out.println("Meno: " + film_databaza.getFilm_name());
                         System.out.println("Meno rezisera: " + film_databaza.getDirector_name());
                         System.out.println("Rok vydanaia: " + film_databaza.getRelease_year());
-                        System.out.println("Review (out of/5) : " + film_databaza.getReview());
                         System.out.println("Herci: " + Arrays.toString(film_databaza.getActors()));
                         System.out.println("---------------------");
                         najdeny = true;
@@ -117,7 +111,6 @@ public class App{
                     System.out.println("Meno: " + film.getFilm_name());
                     System.out.println("Meno rezisera: " + film.getDirector_name());
                     System.out.println("Rok vydania: " + film.getRelease_year());
-                    System.out.println("review: " + film.getReview());
                     System.out.println("Actors: " + Arrays.toString(film.getActors()));
                     System.out.println("---------------------");
                 }
@@ -131,7 +124,6 @@ public class App{
                     System.out.println("Momentalne informacie o filme: " + film.getFilm_name());
                     System.out.println("Meno rezisera: " + film.getDirector_name());
                     System.out.println("Rok vydania: " + film.getRelease_year());
-                    System.out.println("review: " + film.getReview());
                     System.out.println("Actors: " + Arrays.toString(film.getActors()));
                     System.out.println("---------------------");
                     System.out.print("Napis nove meno filmu (stlac enter ked ho chces nechat): ");
@@ -140,9 +132,6 @@ public class App{
                     String newDirector_name = sc.nextLine();
                     System.out.print("Novy rok vydania (stlac enter ked ho chces nechat): ");
                     int newRelease_year = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Nove review: ");
-                    int newReview = sc.nextInt();
                     sc.nextLine();
                     System.out.print("Novy herci (oddeleny ciarkou)(stlac eneter pokial chces nechat): ");
                     String newActors = sc.nextLine();
@@ -154,9 +143,6 @@ public class App{
                     }
                     if(newRelease_year != 0){
                         film.setRelease_year(newRelease_year);
-                    }
-                    if(newReview != 0){
-                        film.setReview(newReview);
                     }
                     if(!newActors.isEmpty()){
                          String[] actors = newActors.split(",");
