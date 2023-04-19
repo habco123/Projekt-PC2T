@@ -70,7 +70,11 @@ public class App{
                     System.out.println("Meno: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
-                    System.out.println("Herci: " + Arrays.toString(hladanyFilm.getActors()));
+                    if(hladanyFilm instanceof AnimatedFilm){
+                        System.out.println("Animatori: " + hladanyFilm.getActors());
+                    }else{
+                        System.out.println("Herci: " + Arrays.toString(hladanyFilm.getActors()));
+                    }
                     hladanyFilm.getReviews();
                     System.out.println("---------------------");
                 }
@@ -117,12 +121,12 @@ public class App{
                     System.out.println("Rok vydania: " + film.getRelease_year());
                     if(film instanceof AnimatedFilm){
                         System.out.println("Animatori: " + Arrays.toString(film.getActors()));
-                        //jak dostat min vek? 
+                        AnimatedFilm animak = (AnimatedFilm) film;
+                        System.out.println("Min vek divaka: " + animak.getMin());
                     }else{
                         System.out.println("Herci: " + Arrays.toString(film.getActors()));
                     }
                     System.out.println("---------------------");
-                    
                 }
                 break;
             case 6:

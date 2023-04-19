@@ -5,11 +5,11 @@ public class AnimatedFilm extends Filmy{
         super(film_name, director_name, release_year, actors);
         this.min = min;
     }
-    public void getMin(){
-        System.out.println("min vek: " + min);
+
+    public int getMin(){
+        return min;
     }
     public String typFilmu(){
         return "Animak";
     }
 }
-//haha hihi
