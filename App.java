@@ -61,11 +61,13 @@ public class App{
                 for(Film film_databaza : filmMap.values()){
                     String[] actorsArray = film_databaza.getActors();
                     if(Arrays.asList(actorsArray).contains(hladanyActor)){
+                        System.out.println("---------------------");
                         System.out.println("Meno filmu: " + film_databaza.getFilm_name());
                         System.out.println("Meno rezisera: " + film_databaza.getDirector_name());
                         System.out.println("Rok vydanaia: " + film_databaza.getRelease_year());
                         System.out.println("Review (out of/5) : " + film_databaza.getReview());
                         System.out.println("Herci: " + Arrays.toString(film_databaza.getActors()));
+                        System.out.println("---------------------");
                         najdeny = true;
                     }
                 }
