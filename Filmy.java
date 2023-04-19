@@ -43,3 +43,4 @@ abstract class Filmy {
     }
 
 }
+//skuska debil 
