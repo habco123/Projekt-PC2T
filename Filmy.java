@@ -1,3 +1,4 @@
+
 abstract class Filmy {
     private String film_name;
     private String director_name;
@@ -9,11 +10,9 @@ abstract class Filmy {
         this.film_name = film_name;
         this.director_name = director_name;
         this.release_year = release_year;
-        this.review = review;
         this.actors = actors;
-        
+        this.review = review;
     }
-
     public String getFilm_name(){
         return film_name;
     }
@@ -27,6 +26,7 @@ abstract class Filmy {
     public int getReview(){
         return review;
     }
+    
     public String[] getActors(){
         return actors;
     }

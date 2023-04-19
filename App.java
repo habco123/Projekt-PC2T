@@ -6,7 +6,7 @@ public class App{
     public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     
-    Map<String, Film> filmMap = new HashMap<String, Film>();
+    Map<String, Filmy> filmMap = new HashMap<String, Filmy>();
 
 
     while(true){
@@ -27,7 +27,7 @@ public class App{
                 String director_name = sc.nextLine();
                 System.out.print("Rok vydania: ");
                 int release_year = sc.nextInt();
-                System.out.println("Review out of / 5 ");
+                System.out.print("Review out of / 5 ");
                 int review = sc.nextInt();
                 sc.nextLine();
                 System.out.println("Mena hercov (rozdeleni ciarkou): ");
@@ -41,7 +41,7 @@ public class App{
                 System.out.print("Meno filmu ktory chces vyhladat: ");
                 String hladanyFilm_meno = sc.nextLine();
                 if(filmMap.containsKey(hladanyFilm_meno)){
-                    Film hladanyFilm = filmMap.get(hladanyFilm_meno);
+                    Filmy hladanyFilm = filmMap.get(hladanyFilm_meno);
                     System.out.println("---------------------");
                     System.out.println("Meno filmu: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
@@ -58,7 +58,7 @@ public class App{
                 boolean najdeny = false;
                 System.out.println("Napis meno herca: ");
                 String hladanyActor = sc.nextLine();
-                for(Film film_databaza : filmMap.values()){
+                for(Filmy film_databaza : filmMap.values()){
                     String[] actorsArray = film_databaza.getActors();
                     if(Arrays.asList(actorsArray).contains(hladanyActor)){
                         System.out.println("---------------------");
