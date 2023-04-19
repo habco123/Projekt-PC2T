@@ -16,6 +16,7 @@ public class App{
         System.out.println("5... Vypis celej databazi");
         System.out.println("6... upravit existujuci film/animak");
         System.out.println("7... pridat review");
+        System.out.println("10... hercovia ktory su viac ako 1 krat");
         System.out.println("8... skoncenie programu");
         System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
@@ -190,7 +191,7 @@ public class App{
                 boolean herecNajdeny = false;
                 for(Map.Entry<String, List<String>> entry : actorFilmsMap.entrySet()){
                     if(entry.getValue().size() > 1){
-                        System.out.println(entry.getKey() + "bol v: " + entry.getValue().size() + "filmoch");
+                        System.out.println(entry.getKey() + " bol/a v: " + entry.getValue().size() + " filmoch");
                         for(String film : entry.getValue()){
                             System.out.println("- " + film);
                         }
@@ -198,7 +199,7 @@ public class App{
                     }
                 }
                 if(!herecNajdeny){
-                    System.out.println("ziadny herec ktory bol vo viac ako 1 filme nene");
+                    System.out.println("ziadny herec ktory bol vo viac ako 1 filme neni");
                 }
                 break;
                 
