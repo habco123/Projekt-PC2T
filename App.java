@@ -2,6 +2,7 @@ import java.util.*;
 
 
 public class App{
+    
     public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     
@@ -41,14 +42,35 @@ public class App{
                 String hladanyFilm_meno = sc.nextLine();
                 if(filmMap.containsKey(hladanyFilm_meno)){
                     Film hladanyFilm = filmMap.get(hladanyFilm_meno);
+                    System.out.println("---------------------");
                     System.out.println("Meno filmu: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
                     System.out.println("Review (out of/5) : " + hladanyFilm.getReview());
                     System.out.println("Herci: " + Arrays.toString(hladanyFilm.getActors()));
+                    System.out.println("---------------------");
                 }
                 else {
                     System.out.println("Hladany film neexistuje (asi zle zadane meno)");
+                }
+                break;
+            case 3:
+                boolean najdeny = false;
+                System.out.println("Napis meno herca: ");
+                String hladanyActor = sc.nextLine();
+                for(Film film_databaza : filmMap.values()){
+                    String[] actorsArray = film_databaza.getActors();
+                    if(Arrays.asList(actorsArray).contains(hladanyActor)){
+                        System.out.println("Meno filmu: " + film_databaza.getFilm_name());
+                        System.out.println("Meno rezisera: " + film_databaza.getDirector_name());
+                        System.out.println("Rok vydanaia: " + film_databaza.getRelease_year());
+                        System.out.println("Review (out of/5) : " + film_databaza.getReview());
+                        System.out.println("Herci: " + Arrays.toString(film_databaza.getActors()));
+                        najdeny = true;
+                    }
+                }
+                if(najdeny == false){
+                    System.out.println("Dany herec neni v databaze");
                 }
                 break;
             case 5:
