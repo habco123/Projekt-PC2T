@@ -45,13 +45,10 @@ abstract class Filmy {
     public void getReviews(){
         Map<Integer, String> sortedTreeMap = new TreeMap<>(Comparator.reverseOrder());
         sortedTreeMap.putAll(reviews);
+        System.out.println("Hodnotenia: ");
         for(int i : sortedTreeMap.keySet()){
             System.out.println(i + " " + sortedTreeMap.get(i));
         }
-
-        /*for(int i : reviews.keySet()){
-            System.out.println(i + ", " + reviews.get(i));
-        }*/
     }
     public abstract String typFilmu();
     
