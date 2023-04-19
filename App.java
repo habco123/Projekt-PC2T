@@ -67,7 +67,7 @@ public class App{
                 if(filmMap.containsKey(hladanyFilm_meno)){
                     Filmy hladanyFilm = filmMap.get(hladanyFilm_meno);
                     System.out.println("---------------------");
-                    System.out.printf("Meno: " + hladanyFilm.getFilm_name());
+                    System.out.println("Meno: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
                     System.out.println("Review (out of/5) : " + hladanyFilm.getReview());
@@ -86,7 +86,7 @@ public class App{
                     String[] actorsArray = film_databaza.getActors();
                     if(Arrays.asList(actorsArray).contains(hladanyActor)){
                         System.out.println("---------------------");
-                        System.out.println("Meno filmu: " + film_databaza.getFilm_name());
+                        System.out.println("Meno: " + film_databaza.getFilm_name());
                         System.out.println("Meno rezisera: " + film_databaza.getDirector_name());
                         System.out.println("Rok vydanaia: " + film_databaza.getRelease_year());
                         System.out.println("Review (out of/5) : " + film_databaza.getReview());
@@ -99,6 +99,15 @@ public class App{
                     System.out.println("Dany herec neni v databaze");
                 }
                 break;
+            case 4:
+                System.out.print("Meno filmu/animaku ktory chces vymazat: ");
+                String film_name = sc.nextLine();
+                if(filmMap.containsKey(film_name)){
+                    filmMap.remove(film_name);
+                    System.out.println("Uspesne vymazany!");
+                }
+                else
+                    System.out.println("Film nebol najdeny (asi zle zadane meno)");
             case 5:
                 System.out.println("Koniec programu");
                 System.exit(0);
