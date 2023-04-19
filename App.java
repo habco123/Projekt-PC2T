@@ -1,6 +1,6 @@
 import java.util.*;
 
-
+//suckujes kokot ty slabko vyjebany :))))))))
 public class App{
     
     public static void main(String[] args) {
@@ -12,11 +12,12 @@ public class App{
     while(true){
         System.out.println("1... pridat film");
         System.out.println("2... najst film podla nazvu");
-        System.out.println("3... najst ");
+        System.out.println("3... najst vsetky filmy v ktorych sa vyskytoval hladany herec: ");
         System.out.println("4... odstranit film/animak");
         System.out.println("5... Vypis celej databazi");
         System.out.println("6... upravit existujuci film/animak");
-        System.out.println("7... skoncenie programu");
+        System.out.println("7... pridat review");
+        System.out.println("8... skoncenie programu");
         System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
         sc.nextLine();
@@ -107,6 +108,7 @@ public class App{
                 break;
             case 5:
                 for(Filmy film : filmMap.values()){
+
                     System.out.println("---------------------");
                     System.out.println("Meno: " + film.getFilm_name());
                     System.out.println("Meno rezisera: " + film.getDirector_name());
@@ -152,7 +154,7 @@ public class App{
                     System.out.println("Hladany film neexituje!");
                 }
                 break;
-            case 7:
+            case 8:
                 System.out.println("Koniec programu");
                 System.exit(0);
                 sc.close();
