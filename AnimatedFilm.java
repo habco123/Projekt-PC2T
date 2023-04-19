@@ -1,30 +1,12 @@
 public class AnimatedFilm extends Filmy{
-    private int recommended_age;
-    private int review;
-    private String stringReview;
+    private int min;
 
-    public AnimatedFilm(String film_name, String director_name, int release_year, String[] actors, int recommended_age){
+    public AnimatedFilm(String film_name, String director_name, int release_year, String[] actors, int min){
         super(film_name, director_name, release_year, actors);
-        this.recommended_age = recommended_age;
+        this.min = min;
     }
-    
-    public int getReccomendedAge(){
-        return recommended_age;
-    }
-
-    public void setReview(int review){
-        this.review = review;
-    }
-    public void setReview_string(String stringReview){
-        this.stringReview = stringReview;
-    }
-
-    public int getReview(){
-        return review;
-    }
-
-    public String getReview_String(){
-        return stringReview;
+    public void getMin(){
+        System.out.println("min vek: " + min);
     }
 }
 //haha hihi

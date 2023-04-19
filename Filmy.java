@@ -39,9 +39,15 @@ abstract class Filmy {
     public void setActors(String[] actors){
         this.actors = actors;
     }
-    public void getReviews(int review_int, String review_string){
+    public void setReviews(int review_int, String review_string){
         reviews.put(review_int, review_string);
     }
+    public void getReviews(){
+        for(int i : reviews.keySet()){
+            System.out.println(i + ", " + reviews.get(i));
+        }
+    }
+    
 
 }
  

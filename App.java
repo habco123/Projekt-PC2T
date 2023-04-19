@@ -1,5 +1,4 @@
 import java.util.*;
-
 //suckujes kokot ty slabko vyjebany :))))))))
 public class App{
     
@@ -66,10 +65,12 @@ public class App{
                 if(filmMap.containsKey(hladanyFilm_meno)){
                     Filmy hladanyFilm = filmMap.get(hladanyFilm_meno);
                     System.out.println("---------------------");
+                    
                     System.out.println("Meno: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
                     System.out.println("Herci: " + Arrays.toString(hladanyFilm.getActors()));
+                    hladanyFilm.getReviews();
                     System.out.println("---------------------");
                 }
                 else {
@@ -108,13 +109,18 @@ public class App{
                 break;
             case 5:
                 for(Filmy film : filmMap.values()){
-
                     System.out.println("---------------------");
                     System.out.println("Meno: " + film.getFilm_name());
                     System.out.println("Meno rezisera: " + film.getDirector_name());
                     System.out.println("Rok vydania: " + film.getRelease_year());
-                    System.out.println("Actors: " + Arrays.toString(film.getActors()));
+                    if(film instanceof AnimatedFilm){
+                        System.out.println("Animatori: " + Arrays.toString(film.getActors()));
+                        //jak dostat min vek? 
+                    }else{
+                        System.out.println("Herci: " + Arrays.toString(film.getActors()));
+                    }
                     System.out.println("---------------------");
+                    
                 }
                 break;
             case 6:
@@ -154,6 +160,48 @@ public class App{
                     System.out.println("Hladany film neexituje!");
                 }
                 break;
+            case 7:
+                System.out.print("Meno filmu/animaku: ");
+                String hladanyFilm = sc.nextLine();
+                if(filmMap.containsKey(hladanyFilm)){
+                    Filmy film = filmMap.get(hladanyFilm);
+                    System.out.print("Ak sa jedna o animak ohodnot x/10 pri normalnom filme x/5: ");
+                    int review_int = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Napis nejake slovne hodnotenie (ak nechces stal enter): ");
+                    String review_string = sc.nextLine();
+                    film.setReviews(review_int, review_string);
+                }
+                else{
+                    System.out.println("Hladany film neexistuje (asi zle zadane meno)");
+                }
+                break;
+
+            case 10:
+                Map<String, List<String>> actorFilmsMap = new HashMap<>();
+                for(Filmy film : filmMap.values()){
+                    for(String actor : film.getActors()){
+                        List<String> films = actorFilmsMap.getOrDefault(actor, new ArrayList<>());
+                        films.add(film.getFilm_name());
+                        actorFilmsMap.put(actor, films);
+                    }
+                }
+
+                boolean herecNajdeny = false;
+                for(Map.Entry<String, List<String>> entry : actorFilmsMap.entrySet()){
+                    if(entry.getValue().size() > 1){
+                        System.out.println(entry.getKey() + "bol v: " + entry.getValue().size() + "filmoch");
+                        for(String film : entry.getValue()){
+                            System.out.println("- " + film);
+                        }
+                        herecNajdeny = true;
+                    }
+                }
+                if(!herecNajdeny){
+                    System.out.println("ziadny herec ktory bol vo viac ako 1 filme nene");
+                }
+                break;
+                
             case 8:
                 System.out.println("Koniec programu");
                 System.exit(0);
