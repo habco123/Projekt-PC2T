@@ -11,9 +11,6 @@ public class AnimatedFilm extends Filmy{
         return recommended_age;
     }
 
-    @Override
-    public String getType(){
-        return "Animaku";
-    }
+    
     
 }

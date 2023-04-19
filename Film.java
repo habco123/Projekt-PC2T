@@ -4,8 +4,5 @@ public class Film extends Filmy{
         super(film_name, director_name, release_year, review, actors);
     }
 
-    @Override
-    public String getType(){
-        return "Filmu";
-    }
+    
 }

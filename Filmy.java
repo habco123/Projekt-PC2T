@@ -30,6 +30,6 @@ abstract class Filmy {
     public String[] getActors(){
         return actors;
     }
-    public abstract String getType();
+    
 
 }
