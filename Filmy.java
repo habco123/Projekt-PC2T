@@ -11,6 +11,7 @@ abstract class Filmy {
         this.release_year = release_year;
         this.review = review;
         this.actors = actors;
+        
     }
 
     public String getFilm_name(){
@@ -29,4 +30,5 @@ abstract class Filmy {
     public String[] getActors(){
         return actors;
     }
+
 }

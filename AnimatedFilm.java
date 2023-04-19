@@ -1,5 +1,5 @@
 public class AnimatedFilm extends Filmy{
-    
+
     private int recommended_age;
 
     public AnimatedFilm(String film_name, String director_name, int release_year, int review, String[] actors, int recommended_age){
@@ -9,4 +9,5 @@ public class AnimatedFilm extends Filmy{
     public int getReccomendedAge(){
         return recommended_age;
     }
+    
 }
