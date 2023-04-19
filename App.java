@@ -111,6 +111,7 @@ public class App{
             case 5:
                 for(Filmy film : filmMap.values()){
                     System.out.println("---------------------");
+                    System.out.println("typ:" + film.typFilmu());
                     System.out.println("Meno: " + film.getFilm_name());
                     System.out.println("Meno rezisera: " + film.getDirector_name());
                     System.out.println("Rok vydania: " + film.getRelease_year());
