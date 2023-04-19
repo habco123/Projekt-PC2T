@@ -12,10 +12,10 @@ public class App{
     while(true){
         System.out.println("1... pridat film");
         System.out.println("2... najst film podla nazvu");
-        System.out.println("3... najst film podla nazvu herca");
-        System.out.println("4... odstranit film");
+        System.out.println("3... najst ");
+        System.out.println("4... odstranit film/animak");
         System.out.println("5... Vypis celej databazi");
-        System.out.println("6... upravit existujuci film");
+        System.out.println("6... upravit existujuci film/animak");
         System.out.println("7... skoncenie programu");
         System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
