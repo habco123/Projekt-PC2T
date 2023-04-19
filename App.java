@@ -9,13 +9,14 @@ public class App{
 
 
     while(true){
-        System.out.println("Co chces robit:");
         System.out.println("1... pridat film");
         System.out.println("2... najst film podla nazvu");
         System.out.println("3... najst film podla nazvu herca");
         System.out.println("4... odstranit film");
         System.out.println("5... skoncenie programu");
+        System.out.print("Co chces robit:");
         int vyber  = sc.nextInt();
+        sc.nextLine();
 
         switch(vyber){
             case 1:
@@ -27,8 +28,10 @@ public class App{
                 int release_year = sc.nextInt();
                 System.out.println("Review out of / 5 ");
                 int review = sc.nextInt();
-                 System.out.println("Mena hercov (rozdeleni ciarkou): ");
+                sc.nextLine();
+                System.out.println("Mena hercov (rozdeleni ciarkou): ");
                 String[] actors = sc.nextLine().split(",");
+
                 Film film = new Film(film_name, director_name, release_year, review, actors);
                 filmMap.put(film_name, film);
                 System.out.println("Film bol uspesne pridany");
@@ -51,9 +54,9 @@ public class App{
             case 5:
                 System.out.println("Koniec programu");
                 System.exit(0);
+                sc.close();
                 break;
         }
-        sc.close();
     }
     
     }
