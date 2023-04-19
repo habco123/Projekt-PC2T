@@ -1,5 +1,5 @@
 import java.util.*;
-//suckujes kokot ty slabko vyjebany :))))))))
+
 public class App{
     
     public static void main(String[] args) {
