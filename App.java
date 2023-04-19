@@ -15,35 +15,59 @@ public class App{
         System.out.println("3... najst film podla nazvu herca");
         System.out.println("4... odstranit film");
         System.out.println("5... skoncenie programu");
-        System.out.print("Co chces robit:");
+        System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
         sc.nextLine();
 
         switch(vyber){
             case 1:
-                System.out.print("Meno filmu: ");
-                String film_name = sc.nextLine();
-                System.out.print("Meno rezisera: ");
-                String director_name = sc.nextLine();
-                System.out.print("Rok vydania: ");
-                int release_year = sc.nextInt();
-                System.out.print("Review out of / 5 ");
-                int review = sc.nextInt();
+                System.out.println("1... Animak\n2... Normalny film");
+                System.out.print("Aky film chces pridat: ");
+                int film_type = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Mena hercov (rozdeleni ciarkou): ");
-                String[] actors = sc.nextLine().split(",");
+                if(film_type == 2){
+                    System.out.print("Meno: ");
+                    String film_name = sc.nextLine();
+                    System.out.print("Meno rezisera: ");
+                    String director_name = sc.nextLine();
+                    System.out.print("Rok vydania: ");
+                    int release_year = sc.nextInt();
+                    System.out.print("Review out of / 5 ");
+                    int review = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Mena hercov (rozdeleni ciarkou): ");
+                    String[] actors = sc.nextLine().split(",");
 
-                Film film = new Film(film_name, director_name, release_year, review, actors);
-                filmMap.put(film_name, film);
-                System.out.println("Film bol uspesne pridany");
+                    Film film = new Film(film_name, director_name, release_year, review, actors);
+                    filmMap.put(film_name, film);
+                    System.out.println("Film bol uspesne pridany");
+                }else{
+                    System.out.print("Meno: ");
+                    String film_name = sc.nextLine();
+                    System.out.print("Meno rezisera: ");
+                    String director_name = sc.nextLine();
+                    System.out.print("Rok vydania: ");
+                    int release_year = sc.nextInt();
+                    System.out.print("Review out of / 5 ");
+                    int review = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Mena animatorov (rozdeleni ciarkou): ");
+                    String[] actors = sc.nextLine().split(",");
+                    System.out.print("Vekove obmedzenie: ");
+                    int min_age = sc.nextInt();
+                    
+                    AnimatedFilm film = new AnimatedFilm(film_name, director_name, release_year, review, actors, min_age);
+                    filmMap.put(film_name, film);
+                    System.out.println("Animak bol uspesne pridany");
+                }
                 break;
             case 2:
-                System.out.print("Meno filmu ktory chces vyhladat: ");
+                System.out.print("Meno film/animaku ktory chces vyhladat: ");
                 String hladanyFilm_meno = sc.nextLine();
                 if(filmMap.containsKey(hladanyFilm_meno)){
                     Filmy hladanyFilm = filmMap.get(hladanyFilm_meno);
                     System.out.println("---------------------");
-                    System.out.println("Meno filmu: " + hladanyFilm.getFilm_name());
+                    System.out.printf("Meno: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
                     System.out.println("Review (out of/5) : " + hladanyFilm.getReview());

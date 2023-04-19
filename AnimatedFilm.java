@@ -10,5 +10,10 @@ public class AnimatedFilm extends Filmy{
     public int getReccomendedAge(){
         return recommended_age;
     }
+
+    @Override
+    public String getType(){
+        return "Animaku";
+    }
     
 }
