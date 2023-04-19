@@ -8,5 +8,8 @@ public class AnimatedFilm extends Filmy{
     public void getMin(){
         System.out.println("min vek: " + min);
     }
+    public String typFilmu(){
+        return "Animak";
+    }
 }
 //haha hihi

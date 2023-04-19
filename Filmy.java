@@ -43,10 +43,17 @@ abstract class Filmy {
         reviews.put(review_int, review_string);
     }
     public void getReviews(){
-        for(int i : reviews.keySet()){
-            System.out.println(i + ", " + reviews.get(i));
+        Map<Integer, String> sortedTreeMap = new TreeMap<>(Comparator.reverseOrder());
+        sortedTreeMap.putAll(reviews);
+        for(int i : sortedTreeMap.keySet()){
+            System.out.println(i + " " + sortedTreeMap.get(i));
         }
+
+        /*for(int i : reviews.keySet()){
+            System.out.println(i + ", " + reviews.get(i));
+        }*/
     }
+    public abstract String typFilmu();
     
 
 }

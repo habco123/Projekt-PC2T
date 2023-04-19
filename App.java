@@ -66,7 +66,7 @@ public class App{
                 if(filmMap.containsKey(hladanyFilm_meno)){
                     Filmy hladanyFilm = filmMap.get(hladanyFilm_meno);
                     System.out.println("---------------------");
-                    
+                    System.out.println("typ (animak je x/10 normalny je x/5): " + hladanyFilm.typFilmu());
                     System.out.println("Meno: " + hladanyFilm.getFilm_name());
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
