@@ -1,5 +1,5 @@
 import java.util.*;
-//haha ihi idete to ?
+//haha
 public class App{
     
     public static void main(String[] args) {

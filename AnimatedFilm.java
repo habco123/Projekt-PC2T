@@ -1,6 +1,6 @@
 public class AnimatedFilm extends Filmy{
     private int min;
-
+//haha
     public AnimatedFilm(String film_name, String director_name, int release_year, String[] actors, int min){
         super(film_name, director_name, release_year, actors);
         this.min = min;
