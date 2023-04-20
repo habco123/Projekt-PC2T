@@ -71,7 +71,7 @@ public class App{
                     System.out.println("Meno rezisera: " + hladanyFilm.getDirector_name());
                     System.out.println("Rok vydanaia: " + hladanyFilm.getRelease_year());
                     if(hladanyFilm instanceof AnimatedFilm){
-                        System.out.println("Animatori: " + hladanyFilm.getActors());
+                        System.out.println("Animatori: " + Arrays.toString(hladanyFilm.getActors()));
                     }else{
                         System.out.println("Herci: " + Arrays.toString(hladanyFilm.getActors()));
                     }
