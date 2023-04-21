@@ -15,12 +15,13 @@ public class App{
         System.out.println("5... Vypis celej databazi");
         System.out.println("6... upravit existujuci film/animak");
         System.out.println("7... pridat review");
+        System.out.println("9... zapisat film do suboru");
         System.out.println("10... hercovia ktory su viac ako 1 krat");
         System.out.println("8... skoncenie programu");
         System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
         sc.nextLine();
-
+        
         switch(vyber){
             case 1:
                 System.out.println("1... Animak\n2... Normalny film");
@@ -181,7 +182,17 @@ public class App{
                     System.out.println("Hladany film neexistuje (asi zle zadane meno)");
                 }
                 break;
-
+            case 9:
+                System.out.print("meno filmu ktory chces zapisat");
+                String in_film = sc.nextLine();
+                if(filmMap.containsKey(in_film)){
+                    Filmy ulozit_film = filmMap.get(in_film);
+                    io film_in = new io(ulozit_film.getFilm_name(), ulozit_film.getDirector_name(), ulozit_film.getRelease_year(), ulozit_film.getActors());
+                    film_in.fileIN();
+                }else{
+                    System.out.println("film neexistuje");
+                }
+                break;
             case 10:
                 Map<String, List<String>> actorFilmsMap = new HashMap<>();
                 for(Filmy film : filmMap.values()){
