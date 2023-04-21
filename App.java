@@ -6,8 +6,7 @@ public class App{
     Scanner sc = new Scanner(System.in);
     
     Map<String, Filmy> filmMap = new HashMap<String, Filmy>();
-
-
+    
     while(true){
         System.out.println("1... pridat film");
         System.out.println("2... najst film podla nazvu");
@@ -207,7 +206,6 @@ public class App{
                     System.out.println("ziadny herec ktory bol vo viac ako 1 filme neni");
                 }
                 break;
-                
             case 8:
                 System.out.println("Koniec programu");
                 System.exit(0);
