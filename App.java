@@ -24,6 +24,7 @@ public class App{
         System.out.println("10... hercovia ktory su viac ako 1 krat");
         System.out.println("11... Citat informacie o filme zo suboru");
         System.out.println("8... skoncenie programu");
+        
         System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
         sc.nextLine();
@@ -242,7 +243,7 @@ public class App{
                 break;
             case 11:
                 System.out.println("Zapis informacie do suboru vo formate:\nmeno:\nmeno rezisera:\nrok vydania:\nmena hercov/animatorov oddelene ciarkou\nmin vek divaka (ak ide o animak)");
-                System.out.print("typ filmu:\n1... animak\n2... normalny film");
+                System.out.print("typ filmu:\n1... animak\n2... normalny film ");
                 int film_type_in = sc.nextInt();
                 sc.nextLine();
                 System.out.print("Meno suboru: ");
@@ -273,6 +274,13 @@ public class App{
                 }catch(IOException e){
                     e.printStackTrace();
                 }
+                break;
+            case 12:
+                Databaza databaza = new Databaza();
+                databaza.connect();
+                databaza.createTable();
+                databaza.insertRecord("Marek", 247374, "Vut ziak", 12500);
+                databaza.selectAll();
                 break;
             case 8:
                 System.out.println("Koniec programu");
