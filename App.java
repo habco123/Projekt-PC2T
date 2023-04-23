@@ -4,8 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-
-
 public class App{
     
     public static void main(String[] args) {
@@ -289,7 +287,27 @@ public class App{
             case 12:
                 Databaza databaza = new Databaza();
                 databaza.connect();
-                filmMap.put(databaza.getMeno(), databaza.getRecord());
+                databaza.createTableAnimated();
+                databaza.createTableNormal();
+                for(Filmy film : filmMap.values()){
+                    if(film instanceof AnimatedFilm){
+                        AnimatedFilm animak = (AnimatedFilm) film;
+                        databaza.insertRecordAnimated(film.getFilm_name(), film.getDirector_name(), film.getRelease_year(), Arrays.toString(film.getActors()), animak.getMin());
+                    }else{
+                        databaza.insertRecordNormal(film.getFilm_name(), film.getDirector_name(), film.getRelease_year(), Arrays.toString(film.getActors()) );
+                    }
+                }
+                databaza.disconnect();
+                break;
+            case 13:
+                Databaza databaza2 = new Databaza();
+                databaza2.connect();
+                for(int i = 1; i <= databaza2.getVelkostNormal(); i++){
+                    Film film = databaza2.getRecordNormal(i);
+                    String nameNormal = databaza2.getMenoNormal();
+                    filmMap.put(nameNormal, film);
+                }
+                databaza2.disconnect();
                 break;
             case 8:
                 System.out.println("Koniec programu");

@@ -4,7 +4,7 @@ public class Databaza {
     private String meno_normal;
     private String meno_animated;
     private Connection conn;
-    
+
     public boolean connect(){
         try{
             conn = DriverManager.getConnection("jdbc:sqlite:Filmy.db");
@@ -14,6 +14,15 @@ public class Databaza {
             e.printStackTrace();
         }
         return false;
+    }
+    public void deleteDatabase(){
+        String sql = "DROP DATABASE Filmy.db";
+        try{
+            Statement stmt = conn.createStatement();
+            stmt.executeQuery(sql);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
     public boolean disconnect(){
         try{
@@ -57,6 +66,7 @@ public class Databaza {
             pstmt.setString(4, actors);
             pstmt.setInt(5, min_age);
             pstmt.execute();
+            pstmt.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -70,6 +80,7 @@ public class Databaza {
             pstmt.setInt(3, year);
             pstmt.setString(4, actors);
             pstmt.execute();
+            pstmt.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -99,18 +110,20 @@ public class Databaza {
                 return film;
             }
             System.out.println("Uspesne nahrane z databazy");
+            stmt.close();
+            rs.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
         return film;
     }
-    public Film getRecordNormal(){
+    public Film getRecordNormal(int num){
         Film film = null;
-        String sql = "SELECT id,Film_name,Director_name,release_year,actors FROM NormalneFilmy";
+        String sql = "SELECT Film_name,Director_name,release_year,actors FROM NormalneFilmy WHERE id = " + num;
         try{
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
+            if(rs.next()){
                 String film_name = rs.getString("film_name");
                 String herci = rs.getString("actors");
                 StringBuilder builder = new StringBuilder(herci);
@@ -122,10 +135,28 @@ public class Databaza {
                 film = new Film(film_name, rs.getString("Director_name"), rs.getInt("release_year"), actorsArr);
                 return film;
             }
+            stmt.close();
+            rs.close();
             System.out.println("Uspesne nahrane z databaze");
         }catch(SQLException e){
             e.printStackTrace();
         }
         return film;
+    }
+    public int getVelkostNormal(){
+        String sql = "SELECT COUNT(*) FROM NormalneFilmy";
+        int count = 0;
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rs =stmt.executeQuery(sql);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            rs.close();
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return count;
     }
 }
