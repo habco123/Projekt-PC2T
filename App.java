@@ -1,4 +1,8 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
+
+
 //haha
 public class App{
     
@@ -183,15 +187,32 @@ public class App{
                 }
                 break;
             case 9:
-                System.out.print("meno filmu ktory chces zapisat");
-                String in_film = sc.nextLine();
-                if(filmMap.containsKey(in_film)){
-                    Filmy ulozit_film = filmMap.get(in_film);
-                    io film_in = new io(ulozit_film.getFilm_name(), ulozit_film.getDirector_name(), ulozit_film.getRelease_year(), ulozit_film.getActors());
-                    film_in.fileIN();
-                }else{
-                    System.out.println("film neexistuje");
+                System.out.print("meno filmu ktory chces zapisat: ");
+                String ulozit_film_name = sc.nextLine();
+                System.out.print("Meno suboru da jakeho chcers zappisat: ");
+                String file_name = sc.nextLine();
+                Filmy ulozit_film = filmMap.get(ulozit_film_name);
+                if(filmMap.containsKey(ulozit_film_name)){
+                    try{
+                        FileWriter myWriter = new FileWriter(file_name);
+                        myWriter.write("Meno filmu: " + ulozit_film.getFilm_name() + "\n");
+                        myWriter.write("Meno rezisera: " + ulozit_film.getDirector_name() + "\n");
+                        myWriter.write("Rok vydania: " + ulozit_film.getRelease_year() + "\n");
+                        if(ulozit_film instanceof AnimatedFilm){
+                            myWriter.write("Animatori: " + Arrays.toString(ulozit_film.getActors()) + "\n");
+                            AnimatedFilm animak = (AnimatedFilm) ulozit_film;
+                            myWriter.write("Min vek divaka: " + animak.getMin());
+                        }else{
+                            myWriter.write("Herci: " + Arrays.toString(ulozit_film.getActors()) + "\n");    
+                        }
+                        myWriter.close();
+                        ulozit_film.zapisatReview(file_name);
+                    }catch(IOException e){
+                        e.printStackTrace();
+                    }
                 }
+                else 
+                    System.out.println("hladany film neexistuje ");
                 break;
             case 10:
                 Map<String, List<String>> actorFilmsMap = new HashMap<>();

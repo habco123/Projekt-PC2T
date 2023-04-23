@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.util.*;
 //haha
 abstract class Filmy {
@@ -51,6 +55,29 @@ abstract class Filmy {
         }
     }
     public abstract String typFilmu();
+
+    public void zapisatReview(String file_name){
+        try{
+            FileWriter myWriter = new FileWriter(file_name, true);
+            BufferedWriter out = new BufferedWriter(myWriter);
+            Map<Integer, String> sortedTreeMap = new TreeMap<>(Comparator.reverseOrder());
+            sortedTreeMap.putAll(reviews);
+            out.write("Hodnotenia: \n");
+            for(int i : sortedTreeMap.keySet()){
+                out.write(i + " " + sortedTreeMap.get(i) + "\n");
+            }
+            System.out.println("-----------------");
+            System.out.println("uspesne zapisane");
+            System.out.println("-----------------");
+            out.close();
+            myWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+    }
+
+    
     
 
 }
