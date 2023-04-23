@@ -1,9 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
 
-//haha
 public class App{
     
     public static void main(String[] args) {
@@ -21,6 +22,7 @@ public class App{
         System.out.println("7... pridat review");
         System.out.println("9... zapisat film do suboru");
         System.out.println("10... hercovia ktory su viac ako 1 krat");
+        System.out.println("11... Citat informacie o filme zo suboru");
         System.out.println("8... skoncenie programu");
         System.out.print("Co chces robit: ");
         int vyber  = sc.nextInt();
@@ -201,7 +203,7 @@ public class App{
                         if(ulozit_film instanceof AnimatedFilm){
                             myWriter.write("Animatori: " + Arrays.toString(ulozit_film.getActors()) + "\n");
                             AnimatedFilm animak = (AnimatedFilm) ulozit_film;
-                            myWriter.write("Min vek divaka: " + animak.getMin());
+                            myWriter.write("Min vek divaka: " + animak.getMin() + "\n");
                         }else{
                             myWriter.write("Herci: " + Arrays.toString(ulozit_film.getActors()) + "\n");    
                         }
@@ -236,6 +238,40 @@ public class App{
                 }
                 if(!herecNajdeny){
                     System.out.println("ziadny herec ktory bol vo viac ako 1 filme neni");
+                }
+                break;
+            case 11:
+                System.out.println("Zapis informacie do suboru vo formate:\nmeno:\nmeno rezisera:\nrok vydania:\nmena hercov/animatorov oddelene ciarkou\nmin vek divaka (ak ide o animak)");
+                System.out.print("typ filmu:\n1... animak\n2... normalny film");
+                int film_type_in = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Meno suboru: ");
+                String file_name_in = sc.nextLine();
+                try{
+                    if(film_type_in == 1){
+                        BufferedReader reader = new BufferedReader(new FileReader(file_name_in));
+                        String name = reader.readLine();
+                        String director_name = reader.readLine();
+                        int release_year = Integer.parseInt(reader.readLine());
+                        String[] actors = reader.readLine().split(",");
+                        int min = Integer.parseInt(reader.readLine());
+                        AnimatedFilm animak = new AnimatedFilm(name, director_name, release_year, actors, min);
+                        filmMap.put(name, animak);
+                        reader.close();
+                        System.out.println("Animak bol uspesne zapisany zo suboru");
+                    }else{
+                        BufferedReader reader = new BufferedReader(new FileReader(file_name_in));
+                        String name = reader.readLine();
+                        String director_name = reader.readLine();
+                        int release_year = Integer.parseInt(reader.readLine());
+                        String[] actors = reader.readLine().split(",");
+                        Film film = new Film(name, director_name, release_year, actors);
+                        filmMap.put(name, film);
+                        reader.close();
+                        System.out.println("Film bol uspesne zapisany zo suboru");
+                    }
+                }catch(IOException e){
+                    e.printStackTrace();
                 }
                 break;
             case 8:

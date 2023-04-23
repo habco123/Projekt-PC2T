@@ -1,9 +1,8 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.*;
-//haha
+
 abstract class Filmy {
     private String film_name;
     private String director_name;
@@ -76,7 +75,9 @@ abstract class Filmy {
         }
         
     }
-
+    public void readFromFile(String file_name){
+        
+    }
     
     
 
