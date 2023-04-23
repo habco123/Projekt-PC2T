@@ -45,13 +45,20 @@ abstract class Filmy {
     public void setReviews(int review_int, String review_string){
         reviews.put(review_int, review_string);
     }
-    public void getReviews(){
+    public void getReviews(int num){
         Map<Integer, String> sortedTreeMap = new TreeMap<>(Comparator.reverseOrder());
         sortedTreeMap.putAll(reviews);
         System.out.println("Hodnotenia: ");
-        for(int i : sortedTreeMap.keySet()){
-            System.out.println(i + " " + sortedTreeMap.get(i));
+        if(num == 1){
+            for(int i : sortedTreeMap.keySet()){
+                System.out.println(i + "/10" + " " + sortedTreeMap.get(i));
+            }
+        }else{
+            for(int i : sortedTreeMap.keySet()){
+                System.out.println(i + "/5" + " " + sortedTreeMap.get(i));
+            }
         }
+        
     }
     public abstract String typFilmu();
 
@@ -75,11 +82,9 @@ abstract class Filmy {
         }
         
     }
-    public void readFromFile(String file_name){
-        
+    public String getActorsinString(){
+        String str = Arrays.toString(actors);
+        return str;
     }
-    
-    
-
 }
  

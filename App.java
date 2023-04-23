@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.util.*;
 
 
+
 public class App{
     
     public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     
     Map<String, Filmy> filmMap = new HashMap<String, Filmy>();
+    
     
     while(true){
         System.out.println("1... pridat film");
@@ -45,6 +47,9 @@ public class App{
                     sc.nextLine();
                     System.out.println("Mena hercov (rozdeleni ciarkou): ");
                     String[] actors = sc.nextLine().split(",");
+                    System.out.println("-----------");
+                    System.out.println(actors[1]);
+                    System.out.println("-----------");
 
                     Film film = new Film(film_name, director_name, release_year, actors);
                     filmMap.put(film_name, film);
@@ -82,7 +87,13 @@ public class App{
                     }else{
                         System.out.println("Herci: " + Arrays.toString(hladanyFilm.getActors()));
                     }
-                    hladanyFilm.getReviews();
+                    int num;
+                    if(hladanyFilm instanceof AnimatedFilm){
+                        num = 1;
+                    }else{
+                        num = 0;
+                    }
+                    hladanyFilm.getReviews(num);
                     System.out.println("---------------------");
                 }
                 else {
@@ -278,9 +289,7 @@ public class App{
             case 12:
                 Databaza databaza = new Databaza();
                 databaza.connect();
-                databaza.createTable();
-                databaza.insertRecord("Marek", 247374, "Vut ziak", 12500);
-                databaza.selectAll();
+                filmMap.put(databaza.getMeno(), databaza.getRecord());
                 break;
             case 8:
                 System.out.println("Koniec programu");
@@ -289,6 +298,5 @@ public class App{
                 break;
         }
     }
-    
     }
 }
