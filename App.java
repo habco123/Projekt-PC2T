@@ -131,7 +131,7 @@ public class App{
             case 5:
                 for(Filmy film : filmMap.values()){
                     System.out.println("---------------------");
-                    //System.out.println("typ: " + film.typFilmu());
+                    System.out.println("typ: " + film.typFilmu());
                     System.out.println("Meno: " + film.getFilm_name());
                     System.out.println("Meno rezisera: " + film.getDirector_name());
                     System.out.println("Rok vydania: " + film.getRelease_year());
@@ -307,11 +307,12 @@ public class App{
                     String nameNormal = databaza2.getMenoNormal();
                     filmMap.put(nameNormal, film);
                 }
-                for(int i = 0; i <= databaza2.getVelkostAnimated(); i++){
+                for(int i = 1; i <= databaza2.getVelkostAnimated(); i++){
                     AnimatedFilm animak = databaza2.getRecordAnimated(i);
                     String nameAnimated = databaza2.getMenoAnimated();
                     filmMap.put(nameAnimated, animak);
                 }
+
                 databaza2.disconnect();
                 break;
             case 8:

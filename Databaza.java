@@ -107,6 +107,7 @@ public class Databaza {
                 builder.deleteCharAt(0);
                 String[] actors = builder.toString().split(",");
                 film = new AnimatedFilm(film_name, rs.getString("Director_name"), rs.getInt("release_year"), actors, rs.getInt("min_age"));
+                //System.out.println("Meno:" + rs.getString("film_name") + ", Director: " + rs.getString("Director_name") + ", Rok: " + rs.getInt("release_year") + ", Herci: "  + actors + ", Min age: " + rs.getInt("min_age"));
                 return film;
             }
             System.out.println("Uspesne nahrane z databazy");
