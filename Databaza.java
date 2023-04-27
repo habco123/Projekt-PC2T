@@ -91,13 +91,13 @@ public class Databaza {
     public String getMenoAnimated(){
         return meno_animated;
     }
-    public AnimatedFilm getRecordAnimated(){
+    public AnimatedFilm getRecordAnimated(int num){
         AnimatedFilm film = null;
-        String sql = "SELECT id,Film_name,Director_name,release_year,actors,min_age FROM AnimovaneFilmy";
+        String sql = "SELECT Film_name,Director_name,release_year,actors,min_age FROM AnimovaneFilmy WHERE id =" + num;
         try{
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
+            if(rs.next()){
                 String film_name = rs.getString("film_name");
                 String herci = rs.getString("actors");
                 this.meno_animated = film_name;
@@ -148,7 +148,7 @@ public class Databaza {
         int count = 0;
         try{
             Statement stmt = conn.createStatement();
-            ResultSet rs =stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(sql);
             if(rs.next()){
                 count = rs.getInt(1);
             }
@@ -159,4 +159,21 @@ public class Databaza {
         }
         return count;
     }
-}
+    public int getVelkostAnimated(){
+        String sql = "SELECT COUNT(*) FROM AnimovaneFilmy";
+        int count = 0;
+        try{
+            Statement stmt = conn.createStatement();;
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            rs.close();
+            stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+}         

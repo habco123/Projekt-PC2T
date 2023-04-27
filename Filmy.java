@@ -82,9 +82,5 @@ abstract class Filmy {
         }
         
     }
-    public String getActorsinString(){
-        String str = Arrays.toString(actors);
-        return str;
-    }
 }
  
