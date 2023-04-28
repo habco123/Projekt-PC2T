@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.*;
 
 public class App{
-    
     public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     
@@ -148,35 +147,91 @@ public class App{
             case 6:
                 System.out.print("Meno filmu/animaku ktory chces upravit: ");
                 String changeFilm_name = sc.nextLine();
+                String input = "";
                 if(filmMap.containsKey(changeFilm_name)){
                     Filmy film = filmMap.get(changeFilm_name);
-                    System.out.println("---------------------");
-                    System.out.println("Momentalne informacie o filme: " + film.getFilm_name());
-                    System.out.println("Meno rezisera: " + film.getDirector_name());
-                    System.out.println("Rok vydania: " + film.getRelease_year());
-                    System.out.println("Actors: " + Arrays.toString(film.getActors()));
-                    System.out.println("---------------------");
-                    System.out.print("Napis nove meno filmu (stlac enter ked ho chces nechat): ");
-                    String newFilm_name = sc.nextLine();
-                    System.out.print("Napis reziser filmu (stlac enter ked ho chces nechat): ");
-                    String newDirector_name = sc.nextLine();
-                    System.out.print("Novy rok vydania (stlac enter ked ho chces nechat): ");
-                    int newRelease_year = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Novy herci (oddeleny ciarkou)(stlac eneter pokial chces nechat): ");
-                    String newActors = sc.nextLine();
-                    if(!newFilm_name.isEmpty()){
-                        film.setFilm_name(newFilm_name);
-                    }
-                    if(!newDirector_name.isEmpty()){
-                        film.setDirector_name(newDirector_name);
-                    }
-                    if(newRelease_year != 0){
-                        film.setRelease_year(newRelease_year);
-                    }
-                    if(!newActors.isEmpty()){
-                         String[] actors = newActors.split(",");
-                         film.setActors(actors);
+                    if(film instanceof AnimatedFilm){
+                        AnimatedFilm animak = (AnimatedFilm) film;
+                        String oldFilm_name = animak.getFilm_name();
+                        String oldDirector_name = animak.getDirector_name();
+                        int oldRelease_year = animak.getRelease_year();
+                        String[] oldAnimatori = animak.getActors();
+                        int oldMin = animak.getMin();
+                        System.out.println("---------------------");
+                        System.out.println("Momentalne informacie o filme: " + oldFilm_name);
+                        System.out.println("Meno rezisera: " + oldDirector_name);
+                        System.out.println("Rok vydania: " + oldRelease_year);
+                        System.out.println("Actors: " + Arrays.toString(oldAnimatori));
+                        System.out.println("Min vek: " +  oldMin);
+                        System.out.println("---------------------");
+                        System.out.print("Napis nove meno animaku (stlac enter ked ho chces nechat): ");
+                        String newFilm_name = sc.nextLine();
+                        System.out.print("Napis meno noveho rezisera (stlac enter ked ho chces nechat): ");
+                        String newDirector_name = sc.nextLine();
+                        System.out.print("Napis novy rok vydania (ak ho nechces zmenit stlac 0): ");
+                        int newRelease_year = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Napis mena novych animatorov (stlac enter ked ich chces nechat): ");
+                        String newAnimatori = sc.nextLine();
+                        System.out.print("Novy min vek: ");
+                        int newMin = sc.nextInt();
+                        sc.nextLine();
+                        
+                        if(!newDirector_name.isEmpty()){
+                            oldDirector_name = newDirector_name;
+                        }
+                        if(newRelease_year != 0){
+                            oldRelease_year = newRelease_year;
+                        }
+                        if(newMin != 0){
+                            oldMin = newMin;
+                        }
+                        if(!newAnimatori.isEmpty()){
+                            oldAnimatori = newAnimatori.split(",");
+                        }
+                        
+                        if(!newFilm_name.isEmpty()){
+                            oldFilm_name = newFilm_name;
+                            filmMap.remove(changeFilm_name);
+                            animak = new AnimatedFilm(oldFilm_name, oldDirector_name, oldRelease_year, oldAnimatori, oldMin);
+                            filmMap.put(oldFilm_name, animak);
+                       }
+                    }else{
+                        Film newFilm = (Film) film;
+                        String oldFilm_name = film.getFilm_name();
+                        String oldDirector_name = film.getDirector_name();
+                        int oldRelease = film.getRelease_year();
+                        String[] oldHerci = film.getActors();
+                        System.out.println("---------------------");
+                        System.out.println("Momentalne informacie o filme: " + oldFilm_name);
+                        System.out.println("Meno rezisera: " + oldDirector_name);
+                        System.out.println("Rok vydania: " + oldRelease);
+                        System.out.println("Actors: " + Arrays.toString(oldHerci));
+                        System.out.println("---------------------");
+                        System.out.print("Napis nove men filmu (stlac enter ked ho chces nechat): ");
+                        String newFilm_name = sc.nextLine();
+                        System.out.print("Napis nove meno rezisera (stlac enter ked chces nechat): ");
+                        String newDirector = sc.nextLine();
+                        System.out.print("Napis novy rok vydania (ked ho nechces zmenit stlac 0): ");
+                        int newRelease_year = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Napis nove mena hercov (stlac enter pokial ich chces nechat): ");
+                        String newHerci = sc.nextLine();
+                        if(!newDirector.isEmpty()){
+                            oldDirector_name = newDirector;
+                        }
+                        if(!newHerci.isEmpty()){
+                            oldHerci = newHerci.split(",");
+                        }
+                        if(newRelease_year != 0){
+                            oldRelease = newRelease_year;
+                        }
+                        if(!newFilm_name.isEmpty()){
+                            oldFilm_name = newFilm_name;
+                            filmMap.remove(changeFilm_name);
+                            newFilm = new Film(oldFilm_name, oldDirector_name, oldRelease, oldHerci);
+                            filmMap.put(oldFilm_name, newFilm);
+                        }
                     }
                 }else{
                     System.out.println("Hladany film neexituje!");
@@ -312,7 +367,6 @@ public class App{
                     String nameAnimated = databaza2.getMenoAnimated();
                     filmMap.put(nameAnimated, animak);
                 }
-
                 databaza2.disconnect();
                 break;
             case 8:

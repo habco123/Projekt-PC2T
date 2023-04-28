@@ -61,7 +61,7 @@ abstract class Filmy {
         
     }
     public abstract String typFilmu();
-
+    
     public void zapisatReview(String file_name){
         try{
             FileWriter myWriter = new FileWriter(file_name, true);
