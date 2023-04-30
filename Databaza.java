@@ -45,6 +45,7 @@ public class Databaza {
         }
         return false;
     }
+    
     public boolean createTableAnimated(){
         String sql = "CREATE TABLE IF NOT EXISTS AnimovaneFilmy (" + "id integer PRIMARY KEY, " + "Film_name TEXT NOT NULL," + "Director_name TEXT NOT NULL," + "release_year int NOT NULL," + "actors TEXT NOT NULL," + "min_age int " +");";
         try{

@@ -147,7 +147,6 @@ public class App{
             case 6:
                 System.out.print("Meno filmu/animaku ktory chces upravit: ");
                 String changeFilm_name = sc.nextLine();
-                String input = "";
                 if(filmMap.containsKey(changeFilm_name)){
                     Filmy film = filmMap.get(changeFilm_name);
                     if(film instanceof AnimatedFilm){
